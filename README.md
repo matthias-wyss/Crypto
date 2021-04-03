@@ -27,17 +27,21 @@ It can encrypt or decrypt text following different algorithms.
 	* Decoding with the key
 	* Brute force decoding
 	* Decoding with frequencies
+
 * Vigenere
 	* Encoding
 	* Decoding with the key
 	* Decoding with frequencies (not yet implemented)
+
 * XOR
 	* Encoding
 	* Decoding with the key
 	* Brute force decoding
+
 * One Time Pad
 	* Encoding
 	* Decoding with the pad
+	
 * CBC
 	* Encoding
 	* Decoding with the pad
