@@ -2,6 +2,7 @@
 
 
 Crypto is a small Java program that was created as part of a mini-project 1 during my first semester of my first year at EPFL.
+
 It can encrypt or decrypt text following different algorithms.
 
 
@@ -18,6 +19,28 @@ It can encrypt or decrypt text following different algorithms.
 * Open crypto/res/spaceEncoding and write "true" or "false"
 * Execute crypto/Crypto.class
 * See the results on crypto/res/results.txt, bruteForceCaesar.txt and bruteForceXor.txt
+
+### Features
+
+* Caesar
+	* Encoding
+	* Decoding with the key
+	* Brute force decoding
+	* Decoding with frequencies
+* Vigenere
+	* Encoding
+	* Decoding with the key
+	* Decoding with frequencies (not yet implemented)
+* XOR
+	* Encoding
+	* Decoding with the key
+	* Brute force decoding
+* One Time Pad
+	* Encoding
+	* Decoding with the pad
+* CBC
+	* Encoding
+	* Decoding with the pad
 
 ### Authors
 
