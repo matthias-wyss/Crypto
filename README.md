@@ -26,4 +26,4 @@ It can encrypt or decrypt text following different algorithms.
 
 ### License
 
-This project is under MIT license - see LICENSE.md for more informations
+This project is under MIT license - see [LICENSE.md](https://github.com/matthias-wyss/Crypto/blob/main/LICENSE.md) for more informations
