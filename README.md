@@ -19,7 +19,6 @@ It can encrypt or decrypt text following different algorithms.
 * Open crypto/res/spaceEncoding and write "true" or "false"
 * Open a terminal
 * Go to the crypto folder
-* Write `javac Crypto.java` and press enter (just the first time)
 * Write `java Crypto.java`and press enter
 * See the results on crypto/res/results.txt, bruteForceCaesar.txt and bruteForceXor.txt
 
@@ -34,7 +33,7 @@ It can encrypt or decrypt text following different algorithms.
 * Vigenere
 	* Encoding
 	* Decoding with the key
-	* Decoding with frequencies (not yet implemented)
+	* Decoding with frequencies
 
 * XOR
 	* Encoding
