@@ -17,7 +17,10 @@ It can encrypt or decrypt text following different algorithms.
 * Open crypto/res/key.txt and write your encoding key
 * Open crypto/res/intForGeneratingPad.txt and write a positive integer
 * Open crypto/res/spaceEncoding and write "true" or "false"
-* Execute crypto/Crypto.class
+* Open a terminal
+* Go to the crypto folder
+* Write `javac Crypto.java` and press enter (just the first time)
+* Write `java Crypto.java`and press enter
 * See the results on crypto/res/results.txt, bruteForceCaesar.txt and bruteForceXor.txt
 
 ### Features
