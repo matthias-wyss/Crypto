@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 import java.util.List;
 
+
 public class Decrypt {
 
 
@@ -16,7 +17,7 @@ public class Decrypt {
      * @return the decoded string or the original encoded message if type is not in the list above.
      */
     public static String breakCipher(String cipher, int type) {
-
+        //TODO : COMPLETE THIS METHOD
         assert(cipher != null && !cipher.isBlank());
         assert(type >= 0 && type <= 2);
         byte[] cipherByteArray = Helper.stringToBytes(cipher);
@@ -40,7 +41,7 @@ public class Decrypt {
             default:
                 return cipher;
         }
-        return finalResult;
+        return finalResult; //TODO: to be modified
     }
 
 
@@ -49,14 +50,14 @@ public class Decrypt {
      * @param bruteForceResult a 2D byte array containing the result of a brute force method
      */
     public static String arrayToString(byte[][] bruteForceResult) {
-
+        //TODO : COMPLETE THIS METHOD
         String result = "";
 
         for (int i = 0; i < bruteForceResult.length; ++i) {
             result += Helper.bytesToString(bruteForceResult[i]) + System.lineSeparator();
         }
 
-        return result;
+        return result; //TODO: to be modified
     }
 
 
@@ -69,6 +70,7 @@ public class Decrypt {
      * @return a 2D byte array containing all the possibilities
      */
     public static byte[][] caesarBruteForce(byte[] cipher) {
+        //TODO : COMPLETE THIS METHOD
 
         byte[][] result = new byte[256][cipher.length];
 
@@ -76,7 +78,7 @@ public class Decrypt {
             result[i+128] = Encrypt.caesar(cipher, (byte) i).clone();
         }
 
-        return result;
+        return result; //TODO: to be modified
     }
 
 
@@ -86,12 +88,13 @@ public class Decrypt {
      * @return the encoding key
      */
     public static byte caesarWithFrequencies(byte[] cipherText) {
+        //TODO : COMPLETE THIS METHOD
 
         float[] charFrequencies = computeFrequencies(cipherText);
 
         byte key = caesarFindKey(charFrequencies);
 
-        return key;
+        return key; //TODO: to be modified
     }
 
     /**
@@ -100,6 +103,7 @@ public class Decrypt {
      * @return the character frequencies as an array of float
      */
     public static float[] computeFrequencies(byte[] cipherText) {
+        //TODO : COMPLETE THIS METHOD
 
         float[] frequencies = new float[256];
 
@@ -118,7 +122,7 @@ public class Decrypt {
             frequencies[j] /= cipherText.length;
         }
 
-        return frequencies;
+        return frequencies; //TODO: to be modified
     }
 
 
@@ -128,6 +132,7 @@ public class Decrypt {
      * @return the key
      */
     public static byte caesarFindKey(float[] charFrequencies) {
+        //TODO : COMPLETE THIS METHOD
 
         float[] produit = new float[256];
         int k = 0;
@@ -179,7 +184,7 @@ public class Decrypt {
 
         byte key = (byte) -(rangByte - aByte);
 
-        return key;
+        return key; //TODO: to be modified
     }
 
 
@@ -193,6 +198,7 @@ public class Decrypt {
      * @return the array of possibilities for the clear text
      */
     public static byte[][] xorBruteForce(byte[] cipher) {
+        //TODO : COMPLETE THIS METHOD
 
         byte[][] result = new byte[256][cipher.length];
 
@@ -200,7 +206,7 @@ public class Decrypt {
             result[i+128] = Encrypt.xor(cipher, (byte) i).clone();
         }
 
-        return result;
+        return result; //TODO: to be modified
     }
 
 
@@ -228,7 +234,7 @@ public class Decrypt {
                 cipherStatic[i] = cipherCleaned.get(i);
             }
             String resultVigenere = Encrypt.encrypt(Helper.bytesToString(cipherStatic), Helper.bytesToString(key), 1);
-            return Helper.stringToBytes(resultVigenere); //on decrypte ici pour nous pas avoir à réutiliser removeSpaces dans breakCipher
+            return Helper.stringToBytes(resultVigenere); //on decrypte ici pour nous pas avoir a reutiliser removeSpaces dans breakCipher
         }
 
 
@@ -242,6 +248,7 @@ public class Decrypt {
      * @return a List of bytes without spaces
      */
     public static List<Byte> removeSpaces(byte[] array){
+        //TODO : COMPLETE THIS METHOD
 
         List<Byte> withoutSpace = new ArrayList<Byte>();
 
@@ -270,7 +277,7 @@ public class Decrypt {
         List<Integer> maxLocalList = maxLocal(coincidencesTable);
         int keyLength = getKeyLength(maxLocalList);
 
-        return keyLength;
+        return keyLength; //TODO: to be modified
     }
 
     public static List<Integer> vigenereCoincidences(List<Byte> cipher){
@@ -391,7 +398,7 @@ public class Decrypt {
 
 
         }
-        return keyTable;
+        return keyTable; //TODO: to be modified
 
     }
 
@@ -417,7 +424,7 @@ public class Decrypt {
             }
             copyCipher[i] = (byte)(cipher[i] ^ iv[i%BLOCKSIZE]);
         }
-        return copyCipher;
+        return copyCipher; //TODO: to be modified
     }
 
 }

@@ -18,7 +18,7 @@ public class Crypto {
 
         String results = "Original input sanitized : " + NEW_LINE + messageClean + NEW_LINE + NEW_LINE + NEW_LINE
                 + "------Caesar------" + NEW_LINE + NEW_LINE + testCaesar(messageBytes, keyBytes[0])  + NEW_LINE
-                + "------Vigenere------" + NEW_LINE + NEW_LINE + testVigenere(messageBytes, keyBytes) + NEW_LINE
+                + "------Vigenere------" + NEW_LINE + NEW_LINE + testVigenere(messageClean, KEY) + NEW_LINE
                 + "------XOR------" + NEW_LINE + NEW_LINE + testXor(messageBytes, keyBytes[0]) + NEW_LINE
                 + "------One Time Pad------" + NEW_LINE + NEW_LINE + testOneTimePad(messageBytes, padForOneTimePad) + NEW_LINE
                 + "------CBC------" + NEW_LINE + NEW_LINE + testCbc(messageBytes, padForCBC);
@@ -59,33 +59,26 @@ public class Crypto {
     }
 
     //Run the Encoding and Decoding using the vigenere pattern
-    public static String testVigenere(byte[] string, byte[] keyword) {
+    public static String testVigenere(String string, String keyword) {
         String stringSpaceEncoding = Helper.readStringFromFile("spaceEncoding.txt");
         boolean SPACE_ENCODING = false;
         if(stringSpaceEncoding.equals("true")) {
             SPACE_ENCODING = true;
         }
         //Encoding
-        byte[] result = Encrypt.vigenere(string, keyword, SPACE_ENCODING);
-        String s = Helper.bytesToString(result);
-        String results = "Key used : " + Helper.readStringFromFile("key.txt") + NEW_LINE + NEW_LINE + "Encoded : " + NEW_LINE + s + NEW_LINE + NEW_LINE;
-
+        String cipher = Encrypt.encrypt(Helper.readStringFromFile("message.txt"), Helper.readStringFromFile("key.txt"), Encrypt.VIGENERE);
+        String results = "Key used : " + Helper.readStringFromFile("key.txt") + NEW_LINE + NEW_LINE + "Encoded : " + NEW_LINE + cipher + NEW_LINE + NEW_LINE;
         //Decoding with key
-
-        byte[] decryptKey = new byte[keyword.length];
-        for(int i = 0; i < keyword.length; ++i) {
-            decryptKey[i] = ((byte) (-keyword[i]));
+        byte[] decryptKey = new byte[Helper.stringToBytes(keyword).length];
+        for(int i = 0; i < Helper.stringToBytes(keyword).length; ++i) {
+            decryptKey[i] = ((byte) (-Helper.stringToBytes(keyword)[i]));
         }
-        String sD = Helper.bytesToString(Encrypt.vigenere(result, decryptKey));
-        results = results + "Decoded knowing the key : " + NEW_LINE + sD + NEW_LINE + NEW_LINE;
+        String decrypted = Encrypt.encrypt(cipher, Helper.bytesToString(decryptKey), Encrypt.VIGENERE);
+        results = results + "Decoded knowing the key : " + NEW_LINE + decrypted + NEW_LINE + NEW_LINE;
 
-		/*  !! DOESN'T WORK !!
-
-		//Decoding without key
-		byte[] decodingKey = Decrypt.vigenereWithFrequencies(result);
-		String sFD = bytesToString(Encrypt.vigenere(result, decodingKey));
-		results = results + "Decoded with frequencies : " + NEW_LINE + sFD + NEW_LINE + NEW_LINE;
-		*/
+        //Decoding without key
+        String broken = Decrypt.breakCipher(cipher, 1);
+        results = results + "Decoded with frequencies : " + NEW_LINE + broken + NEW_LINE + NEW_LINE;
 
         return results;
     }

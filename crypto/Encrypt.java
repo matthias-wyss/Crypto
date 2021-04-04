@@ -33,26 +33,26 @@ public class Encrypt {
         assert(key.length()!=0 && !key.isBlank());
 
         switch (type) {
-            case 0:
+            case CAESAR:
                 keyToByte = (byte) key.charAt(0); //on prend le premier caractere de key comme demande
-                encryptedText = Helper.bytesToString(caesar(plainText, keyToByte, true));
+                encryptedText = Helper.bytesToString(caesar(plainText, keyToByte));
                 break;
-            case 1:
 
+            case VIGENERE:
                 encryptedText = Helper.bytesToString(vigenere(plainText,keyByteArray));
                 break;
 
-            case 2:
+            case XOR:
                 keyToByte = (byte) key.charAt(0);
                 encryptedText = Helper.bytesToString(xor(plainText,keyToByte));
                 break;
 
-            case 3:
+            case ONETIME:
                 assert(plainText.length == keyByteArray.length);
                 encryptedText = Helper.bytesToString(oneTimePad(plainText,keyByteArray));
                 break;
 
-            case 4:
+            case CBC:
                 encryptedText = Helper.bytesToString(cbc(plainText,keyByteArray));
                 break;
         }
